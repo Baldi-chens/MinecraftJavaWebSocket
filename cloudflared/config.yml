@@ -1,0 +1,11 @@
+# cloudflared config (template)
+# Replace <TUNNEL-UUID> with the UUID returned by `cloudflared tunnel create`
+# Replace play.example.com with your domain managed in Cloudflare
+
+tunnel: <TUNNEL-UUID>
+credentials-file: /etc/cloudflared/<TUNNEL-UUID>.json
+
+ingress:
+  - hostname: play.example.com
+    service: tcp://mc-proxy:25566
+  - service: http_status:404
